@@ -2,32 +2,22 @@ import sys
 from src.genetic.manager import Manager
 
 
+CSV_FILE = open("./genetic.csv","w")
+POPULATION = open("./population.population","r")
+
+
+
 manager = Manager()
 
+manager.set_csv_file(CSV_FILE)
 
-args = sys.argv
-
-debug = len(sys.argv) > 1 and sys.argv[1] == '-debug'
-csv_mode = len(sys.argv) > 1 and sys.argv[1] == "-csv"
-if not csv_mode:
-    csv_mode = len(sys.argv) > 2 and sys.argv[2] == "-csv"
-if not debug:
-    debug = len(sys.argv) > 2 and sys.argv[2] == '-debug'
-
-init_population = 4
-
-if(debug):
-    try:
-        init_population = int(input("type init population : "))
-        print("number was -> %s" % (init_population) )
-        while(init_population <= 0):
-            print("number must be greater than 0")
-            init_population = int(input("type init population : "))
-    except Exception:
-        init_population=4
-        print("incorrect input, init_population will be %s" % (init_population) )
+manager.set_population_file(POPULATION)
 
 
-manager.init_random_population(init_population)
+
+
+iterations = int(input("ingrese el numero de iteraciones que desea ejecutar : "))
+manager.set_iterations(iterations)
+
 manager.evolve()
 print("Finished Example")

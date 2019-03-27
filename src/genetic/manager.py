@@ -1,6 +1,7 @@
 from src.genetic.member import Member
 from src.genetic.chromosome import Chromosome
 from random import Random
+from math import fabs
 import sys
 import types
 
@@ -15,13 +16,12 @@ if not debug:
 mem = Member(Chromosome([]))
 
 
+
 class Manager:
 
     PC = 0.8
     PM = 0.03
-    MINIMUM_ITERATIONS = 10
-    CSV_FILE = open(
-        "C:/Users/mgltorsa/Documents/Workspace/python/genetic_algorithms/genetic.csv", "w")
+    MINIMUM_ITERATIONS=10
 
     def default_evaluate_function(self, x: int):
         x1 = self.transform(x)
@@ -48,6 +48,27 @@ class Manager:
         for member in population:
             if(type(member) == type(Member)):
                 pass
+    
+    def set_population_file(self,file):
+        lines =""
+        lines = file.readlines()
+        population = []
+        for line in lines:
+            chromosome_array = []
+            for char in line:
+                if(char!='\n'):
+                    chromosome_array.append(int(char+""))
+            chromosome = Chromosome(chromosome_array)
+            member = Member(chromosome)
+            population.append(member) 
+        self.population=population 
+
+    
+    def set_csv_file(self,csv_file):
+        self.csv_file=csv_file
+
+    def set_iterations(self,iterations):
+        self.minimum_iteration=iterations
 
     def set_evaluate_function(self, evaluate: types.FunctionType):
         self.evaluate = evaluate
@@ -131,7 +152,7 @@ class Manager:
         return str_chromosome
 
     def export(self, line):
-        Manager.CSV_FILE.write(line+"\n")
+        self.csv_file.write(line+"\n")
 
     def step_1(self, population: []):
         if(debug):
@@ -152,7 +173,7 @@ class Manager:
             x = int(chromosome, 2)
             fx = self.evaluate(x)
             meta_population.append([i, chromosome, x, fx])
-            total_fx += fx
+            total_fx += fabs(fx)
         # TODO Falta sacar los porcentajes para eleccion
         return self.calculate_step_1_table(meta_population, total_fx)
 
@@ -169,7 +190,7 @@ class Manager:
             chromosome = meta_member[1]
             x = meta_member[2]
             fx = meta_member[3]
-            fix = float(fx)/float(total_fx)
+            fix = fabs(float(fx)/float(total_fx))
             fix_total = fix+fix_amount
             fix_amount = fix_total
             meta_info = [i, chromosome, x, fx, fix, fix_total]

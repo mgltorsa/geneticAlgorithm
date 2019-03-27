@@ -1,0 +1,28 @@
+El archivo de excel genetic.xlsx presenta la información sobre 10 iteraciones del algoritmo con la población inicial
+propuesta en clase.
+
+La población inicial o su información esta escrita en el archivo population.population, esta puede ser cambiada, pero debe
+respetar el formato:
+
+	Un cromosoma por linea, los cromosomas deben tener la misma lognitud y deben ser cadenas de 1s y 0s
+
+Para ejecutar el algoritmo debe tener python instalado y configurado correctamente, corra la aplicación dando
+doble click sobre el archivo run-example.py o desde la consola de comandos, ingresando a la carpeta raiz genetic_algorithms
+e ingresando el comando python run-example.py
+
+El programa le pedira al usuario la cantidad de iteraciones que desea realizar sobre el algoritmo, una vez ingresado el
+valor que debe ser un número entero mayor a 0, el algoritmo mostrará información de cada iteración en la consola.
+
+El usuario debera ingresar una letra para cerrar la aplicación, una vez hecho esto, podra abrir el archivo genetic.csv
+con excel y en el vera la información de cada iteración.
+
+
+OTROS USOS.
+
+Podra correr la aplicación con una cantidad de iteraciones ilimitada corriendo el programa con el comando -debug,
+ejecutando el siguiente codigo en una consola de comandos:
+
+	python run-example.py -debug
+
+Aunque la aplicación le solicitara un número de iteraciones, estas no se usuaran, al contrario, al final de cada iteración
+la aplicación preguntara al usuario si desea iterar de nuevo.
