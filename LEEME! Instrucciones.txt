@@ -1,12 +1,12 @@
-El archivo de excel genetic.xlsx presenta la información sobre 10 iteraciones del algoritmo con la población inicial
-propuesta en clase.
+El archivo de excel (la entrega final) genetic.xlsx presenta la información 
+sobre 10 iteraciones del algoritmo con la población inicial propuesta en clase.
 
 La población inicial o su información esta escrita en el archivo population.population, esta puede ser cambiada, pero debe
 respetar el formato:
 
 	Un cromosoma por linea, los cromosomas deben tener la misma lognitud y deben ser cadenas de 1s y 0s
 
-Para ejecutar el algoritmo debe tener python instalado y configurado correctamente, corra la aplicación dando
+Si desea ejecutar el algoritmo debe tener python instalado y configurado correctamente, corra la aplicación dando
 doble click sobre el archivo run-example.py o desde la consola de comandos, ingresando a la carpeta raiz genetic_algorithms
 e ingresando el comando python run-example.py
 
