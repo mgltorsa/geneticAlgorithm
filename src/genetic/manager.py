@@ -6,8 +6,11 @@ import types
 
 debug = len(sys.argv) > 1 and sys.argv[1] == '-debug'
 csv_mode = len(sys.argv) > 1 and sys.argv[1] == "-csv"
-if(not csv_mode):
+if not csv_mode:
     csv_mode = len(sys.argv) > 2 and sys.argv[2] == "-csv"
+if not debug:
+    debug = len(sys.argv) > 2 and sys.argv[2] == '-debug'
+
 
 mem = Member(Chromosome([]))
 
@@ -137,7 +140,7 @@ class Manager:
             self.export("Informacion:;PC:;%.3f;PM:;%.3f" % (self.pc, self.pm))
             self.export("")
             self.export("")
-            self.export("step 1")
+            self.export("Paso 1")
             self.export("")
             self.export("")
         meta_population = []
@@ -192,7 +195,7 @@ class Manager:
         if(csv_mode):
             self.export("")
             self.export("")
-            self.export("step 2")
+            self.export("Paso 2")
             self.export("")
             self.export("")
         n_members = len(table)
@@ -240,7 +243,7 @@ class Manager:
         if(csv_mode):
             self.export("")
             self.export("")
-            self.export("step 3")
+            self.export("Paso 3")
             self.export("")
             self.export("")
         new_population = []
@@ -312,7 +315,7 @@ class Manager:
         if(csv_mode):
             self.export("")
             self.export("")
-            self.export("step 4")
+            self.export("Paso 4")
             self.export("")
             self.export("")
         mutated_population = []

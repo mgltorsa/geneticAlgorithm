@@ -7,15 +7,12 @@ manager = Manager()
 
 args = sys.argv
 
-debug = False
-csv_mode=False
-
-if(len(args) >1 ):
-    if(args[1] == "-debug"):
-        debug = True
-        print("in debug mode")
-    if(len(args)>2):
-        csv_mode=args[2] == "-csv"
+debug = len(sys.argv) > 1 and sys.argv[1] == '-debug'
+csv_mode = len(sys.argv) > 1 and sys.argv[1] == "-csv"
+if not csv_mode:
+    csv_mode = len(sys.argv) > 2 and sys.argv[2] == "-csv"
+if not debug:
+    debug = len(sys.argv) > 2 and sys.argv[2] == '-debug'
 
 init_population = 4
 
